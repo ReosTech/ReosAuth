@@ -13,9 +13,10 @@
 - ### Use the following endpoints
 - #### For redirection to  Auth app `https://server-skby.onrender.com/oauth/authorize?client_id=YOUR_CLIENT_KEY&redirect_uri=YOUR_SITE&response_type=code&scope=profile`
 - #### For token exchange use `https://server-skby.onrender.com/oauth/token` with `POST` request having `grant_type=authorization_code&code=AUTH_CODE&redirect_uri=YOUR_SITE&client_id=YOUR_CLIENT_KEY&client_secret=YOUR_SECRET_KEY`
-
+### For demo visit
+[Demo](https://reostech.github.io/ReosAuth)
 #### Having Trouble? Try using the easy auth handler
-[Easy Auth Handler](https://github.com/ReosTech/ReosBucket/raw/refs/heads/main/h.html)
+[Easy Auth Handler](https://github.com/ReosTech/ReosAuth/raw/refs/heads/main/easy_handler.html)
 #### For more details and support email via [Reos Mail](https://reostech.web.app/emails.html) to
 #### support@reostech
 
