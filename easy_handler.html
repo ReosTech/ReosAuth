@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reos Auth Callback</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3 style="margin:0 0 8px 0;">Authenticating...</h3>
+    </div>
+
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code') || '';
+            const username = urlParams.get('username') || '';
+            const token = urlParams.get('token') || '';
+            const status = urlParams.get('status') || (code || username ? 'ALLOWED' : 'FAILED');
+
+            if (window.opener) {
+                window.opener.postMessage({
+                    type: 'REOS_AUTH_GITHUB_CALLBACK',
+                    code: code,
+                    username: username,
+                    token: token,
+                    status: status
+                }, '*');
+
+                setTimeout(function() {
+                    window.close();
+                }, 300);
+            }
+        })();
+    </script>
+</body>
+</html>
